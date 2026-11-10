@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LightOn">
-<script>document.write('<script src="config.js?v=6.1.1&t='+Date.now()+'"><\/script>');</script>
+<script>document.write('<script src="config.js?v=6.1.0&t='+Date.now()+'"><\/script>');</script>
 <style>
   /* Plus Jakarta Sans (variable, weights 200-800), bundled inside the app — SIL Open Font License 1.1 */
   @font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;
@@ -656,13 +656,8 @@ function myPermList(){
 function can(p){ var m=myPermList(); return [].concat(p).some(function(x){ return m.indexOf(x)>=0; }); }
 function versionBanner(){
   if(!S.data||!isStaff()||S.data.version===CLIENT_VERSION) return '';
-  var sv=S.data.version||'older', screensOld=S.data.version && S.data.version>CLIENT_VERSION;
-  var how = screensOld
-    ? (IS_PWA ? 'Upload the new <b>index.html</b> and <b>sw.js</b> to your GitHub repository (keep config.js), wait 1–2 minutes, then reload this page.'
-              : 'In Apps Script, paste the new <b>Index.html</b>, save, then Deploy ▸ Manage deployments ▸ ✏ Edit ▸ New version.')
-    : 'In Apps Script, paste the new <b>Code.gs</b> (keep Index.html and Website.gs), save, then Deploy ▸ Manage deployments ▸ ✏ Edit ▸ New version.';
-  return '<div class="banner"><b>Update not finished.</b> The '+(screensOld?'screens':'server code')+' are older: screens version '+CLIENT_VERSION+', server version '+esc(sv)+'. '+how+
-    (screensOld&&IS_PWA?' <button class="btn sm secondary" style="margin-left:6px" onclick="repairApp()">Reload fresh</button>':'')+'</div>';
+  return '<div class="banner"><b>Update not finished.</b> The screens are version '+CLIENT_VERSION+' but the server code is '+(S.data.version?'version '+esc(S.data.version):'an older version')+
+    '. In Apps Script make sure there are only two files — <b>Code.gs</b> and <b>Index.html</b> — paste the new Code.gs, save, then Deploy ▸ Manage deployments ▸ Edit ▸ New version.</div>';
 }
 function isStaff(){ return S.data && PORTAL_ROLES.indexOf(S.data.user.role)<0; }
 function target(){ return $('view')||$('app'); }
