@@ -6,7 +6,7 @@
 window.LIGHTON = Object.assign({
   /* Your Google Sheet's web app link (Apps Script ▸ Deploy ▸ Web app URL).
      Leave empty to use data/site-data.json instead.                        */
-  DATA_URL: "",
+  DATA_URL: "https://script.google.com/macros/s/AKfycbxQfmp5AktS7YYh4KERr44Px1vufgzi7AnOyDmV8KzsGO1kFlIEzYwiUSBxk-Pica1h/exec?website=1",
 
   /* Registration + student portal (your Apps Script portal PWA) */
   REGISTER_URL: "https://lightonacademy.github.io/?page=register",
